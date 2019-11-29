@@ -1,11 +1,9 @@
 {:paths  ["src/main/clojure"]
- :deps 
-{org.clojure/clojure {:mvn/version "RELEASE"}
-
-:aliases {
-   :test {:extra-paths ["src/test/clojure"] 
-          :extra-deps {}
-         
-         }
-
+ :deps {org.clojure/clojure {:mvn/version "RELEASE"}}
+ :aliases {   
+ :test {:extra-paths ["src/test/clojure"]
+       :extra-deps {com.cognitect/test-runner {:git/url "https://github.com/cognitect-labs/test-runner.git"
+                                               :sha "209b64504cb3bd3b99ecfec7937b358a879f55c1"}}}
+ :run-tests {:main-opts ["-m" "cognitect.test-runner" "-d" "src/test/clojure" "-r" ".*-tests$"]}
+          }
 }
